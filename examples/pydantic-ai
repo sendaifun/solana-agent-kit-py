@@ -1,7 +1,7 @@
 
 import asyncio
 from pydantic_ai import Agent, RunContext
-from agentipy import SolanaAgentKit, create_solana_tools
+from solana_agent_kit import SolanaAgentKit, create_solana_tools
 from pydantic_ai.models.openai import OpenAIModel
 from dataclasses import dataclass
 

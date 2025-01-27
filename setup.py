@@ -4,14 +4,14 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
-    name="agentipy",
+    name="solana-agent-kit",
     version="1.3.5",
-    author="Utilify",
-    author_email="hello@getutilify.com",
-    description="A Python toolkit for Solana agents",
+    author="sendaifun",
+    author_email="dev@sendaifun.com",
+    description="connect any ai agents to solana protocols",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/niceberginc/agentipy",
+    url="https://github.com/sendaifun/solana-agent-kit-py",
     packages=find_packages(),
     python_requires=">=3.7",
     install_requires=[
@@ -42,7 +42,7 @@ setup(
     ],
     include_package_data=True, 
     project_urls={
-        "Bug Tracker": "https://github.com/niceberginc/agentipy/issues",
-        "Documentation": "https://github.com/niceberginc/agentipy#readme",
+        "Bug Tracker": "https://github.com/sendaifun/solana-agent-kit-py/issues",
+        "Documentation": "https://github.com/sendaifun/solana-agent-kit-py#readme",
     },
 )
