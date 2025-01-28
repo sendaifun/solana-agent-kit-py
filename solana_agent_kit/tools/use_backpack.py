@@ -1,7 +1,7 @@
 from backpack_exchange_sdk.authenticated import AuthenticationClient
 from backpack_exchange_sdk.public import PublicClient
 
-from agentipy.agent import SolanaAgentKit
+from solana_agent_kit.agent import SolanaAgentKit
 
 
 class BackpackManager:

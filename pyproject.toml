@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "solana-agent-kit-py"
-version = "1.3.5"
+version = "1.3.9"
 description = "connect any ai agents to solana protocols"
 authors = ["sendaifun <dev@sendaifun.com>"]
 license = "Apache-2.0"

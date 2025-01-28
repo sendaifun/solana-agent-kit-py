@@ -1,4 +1,4 @@
-from agentipy.agent import SolanaAgentKit
+from solana_agent_kit.agent import SolanaAgentKit
 from solana_agent_kit.utils.jito import __send_request
 
 import random

@@ -488,7 +488,7 @@ class SolanaAgentKit:
         
     async def get_metaplex_assets_by_authority(self,authority: str, sortBy: str | None = None, sortDirection: str | None = None,
     limit: int | None = None, page: int | None = None, before: str | None = None, after: str | None = None):
-        from agentipy.tools.use_metaplex import DeployCollectionManager
+        from solana_agent_kit.tools.use_metaplex import DeployCollectionManager
         try:
             return DeployCollectionManager.get_metaplex_assets_by_authority(self, authority, sortBy, sortDirection, limit, page, before, after)
         except Exception as e:
@@ -550,49 +550,49 @@ class SolanaAgentKit:
             raise SolanaAgentKitError(f"Failed to {e}")
 
     async def get_tip_accounts(self):
-        from agentipy.tools.use_jito import JitoManager
+        from solana_agent_kit.tools.use_jito import JitoManager
         try:
             return JitoManager.get_tip_accounts(self)
         except Exception as e:
             raise SolanaAgentKitError(f"Failed to {e}")
 
     async def get_random_tip_account():
-        from agentipy.tools.use_jito import JitoManager
+        from solana_agent_kit.tools.use_jito import JitoManager
         try:
             return JitoManager.get_random_tip_account()
         except Exception as e:
             raise SolanaAgentKitError(f"Failed to {e}")
         
     async def get_bundle_statuses(self, bundle_uuids):
-        from agentipy.tools.use_jito import JitoManager
+        from solana_agent_kit.tools.use_jito import JitoManager
         try:
             return JitoManager.get_bundle_statuses(self, bundle_uuids)
         except Exception as e:
             raise SolanaAgentKitError(f"Failed to {e}")
 
     async def send_bundle(self, params=None):
-        from agentipy.tools.use_jito import JitoManager
+        from solana_agent_kit.tools.use_jito import JitoManager
         try:
             return JitoManager.send_bundle(self, params)
         except Exception as e:
             raise SolanaAgentKitError(f"Failed to {e}")
         
     async def get_inflight_bundle_statuses(self, bundle_uuids):
-        from agentipy.tools.use_jito import JitoManager
+        from solana_agent_kit.tools.use_jito import JitoManager
         try:
             return JitoManager.get_inflight_bundle_statuses(self, bundle_uuids)
         except Exception as e:
             raise SolanaAgentKitError(f"Failed to {e}")
         
     async def send_txn(self, params=None, bundleOnly=False):
-        from agentipy.tools.use_jito import JitoManager
+        from solana_agent_kit.tools.use_jito import JitoManager
         try:
             return JitoManager.send_txn(self, params, bundleOnly)
         except Exception as e:
             raise SolanaAgentKitError(f"Failed to {e}")
     
     async def get_account_balances(self):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_account_balances(self)
         except Exception as e:
@@ -600,7 +600,7 @@ class SolanaAgentKit:
 
 
     async def request_withdrawal(self, address: str, blockchain: str, quantity: str, symbol: str, **kwargs):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.request_withdrawal(self, address, blockchain, quantity, symbol, **kwargs)
         except Exception as e:
@@ -608,7 +608,7 @@ class SolanaAgentKit:
 
 
     async def get_account_settings(self):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_account_settings(self)
         except Exception as e:
@@ -616,7 +616,7 @@ class SolanaAgentKit:
 
 
     async def update_account_settings(self, **kwargs):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.update_account_settings(self, **kwargs)
         except Exception as e:
@@ -624,7 +624,7 @@ class SolanaAgentKit:
 
 
     async def get_borrow_lend_positions(self):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_borrow_lend_positions(self)
         except Exception as e:
@@ -632,7 +632,7 @@ class SolanaAgentKit:
 
 
     async def execute_borrow_lend(self, quantity: str, side: str, symbol: str):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.execute_borrow_lend(self, quantity, side, symbol)
         except Exception as e:
@@ -640,7 +640,7 @@ class SolanaAgentKit:
 
 
     async def get_collateral_info(self, sub_account_id: int = None):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_collateral_info(self, sub_account_id)
         except Exception as e:
@@ -648,7 +648,7 @@ class SolanaAgentKit:
 
 
     async def get_account_deposits(self, **kwargs):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_account_deposits(self, **kwargs)
         except Exception as e:
@@ -656,7 +656,7 @@ class SolanaAgentKit:
 
 
     async def get_open_positions(self):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_open_positions(self)
         except Exception as e:
@@ -664,7 +664,7 @@ class SolanaAgentKit:
 
 
     async def get_borrow_history(self, **kwargs):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_borrow_history(self, **kwargs)
         except Exception as e:
@@ -672,7 +672,7 @@ class SolanaAgentKit:
 
 
     async def get_interest_history(self, **kwargs):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_interest_history(self, **kwargs)
         except Exception as e:
@@ -680,7 +680,7 @@ class SolanaAgentKit:
 
 
     async def get_fill_history(self, **kwargs):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_fill_history(self, **kwargs)
         except Exception as e:
@@ -688,7 +688,7 @@ class SolanaAgentKit:
 
 
     async def get_borrow_position_history(self, **kwargs):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_borrow_position_history(self, **kwargs)
         except Exception as e:
@@ -696,7 +696,7 @@ class SolanaAgentKit:
 
 
     async def get_funding_payments(self, **kwargs):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_funding_payments(self, **kwargs)
         except Exception as e:
@@ -704,7 +704,7 @@ class SolanaAgentKit:
 
 
     async def get_order_history(self, **kwargs):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_order_history(self, **kwargs)
         except Exception as e:
@@ -712,7 +712,7 @@ class SolanaAgentKit:
 
 
     async def get_pnl_history(self, **kwargs):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_pnl_history(self, **kwargs)
         except Exception as e:
@@ -720,7 +720,7 @@ class SolanaAgentKit:
 
 
     async def get_settlement_history(self, **kwargs):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_settlement_history(self, **kwargs)
         except Exception as e:
@@ -728,7 +728,7 @@ class SolanaAgentKit:
 
 
     async def get_users_open_orders(self, **kwargs):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_users_open_orders(self, **kwargs)
         except Exception as e:
@@ -736,7 +736,7 @@ class SolanaAgentKit:
 
 
     async def execute_order(self, **kwargs):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.execute_order(self, **kwargs)
         except Exception as e:
@@ -744,7 +744,7 @@ class SolanaAgentKit:
 
 
     async def cancel_open_order(self, **kwargs):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.cancel_open_order(self, **kwargs)
         except Exception as e:
@@ -752,7 +752,7 @@ class SolanaAgentKit:
 
 
     async def get_open_orders(self, **kwargs):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_open_orders(self, **kwargs)
         except Exception as e:
@@ -760,7 +760,7 @@ class SolanaAgentKit:
 
 
     async def cancel_open_orders(self, **kwargs):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.cancel_open_orders(self, **kwargs)
         except Exception as e:
@@ -768,7 +768,7 @@ class SolanaAgentKit:
 
 
     async def get_supported_assets(self):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_supported_assets(self)
         except Exception as e:
@@ -776,7 +776,7 @@ class SolanaAgentKit:
 
 
     async def get_ticker_information(self, **kwargs):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_ticker_information(self, **kwargs)
         except Exception as e:
@@ -784,7 +784,7 @@ class SolanaAgentKit:
 
 
     async def get_markets(self):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_markets(self)
         except Exception as e:
@@ -792,7 +792,7 @@ class SolanaAgentKit:
 
 
     async def get_market(self, **kwargs):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_market(self, **kwargs)
         except Exception as e:
@@ -800,7 +800,7 @@ class SolanaAgentKit:
 
 
     async def get_tickers(self):
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_tickers(self)
         except Exception as e:
@@ -816,7 +816,7 @@ class SolanaAgentKit:
         Returns:
             dict: Order book depth.
         """
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_depth(self, symbol)
         except Exception as e:
@@ -836,7 +836,7 @@ class SolanaAgentKit:
         Returns:
             dict: K-Lines data.
         """
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_klines(self, symbol, interval, start_time, end_time)
         except Exception as e:
@@ -853,7 +853,7 @@ class SolanaAgentKit:
         Returns:
             dict: Mark price data.
         """
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_mark_price(self, symbol)
         except Exception as e:
@@ -870,7 +870,7 @@ class SolanaAgentKit:
         Returns:
             dict: Open interest data.
         """
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_open_interest(self, symbol)
         except Exception as e:
@@ -889,7 +889,7 @@ class SolanaAgentKit:
         Returns:
             dict: Funding interval rate data.
         """
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_funding_interval_rates(self, symbol, limit, offset)
         except Exception as e:
@@ -903,7 +903,7 @@ class SolanaAgentKit:
         Returns:
             dict: System status.
         """
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_status(self)
         except Exception as e:
@@ -917,7 +917,7 @@ class SolanaAgentKit:
         Returns:
             str: "pong"
         """
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.send_ping(self)
         except Exception as e:
@@ -931,7 +931,7 @@ class SolanaAgentKit:
         Returns:
             str: Current system time.
         """
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_system_time(self)
         except Exception as e:
@@ -949,7 +949,7 @@ class SolanaAgentKit:
         Returns:
             dict: Recent trade data.
         """
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_recent_trades(self, symbol, limit)
         except Exception as e:
@@ -968,7 +968,7 @@ class SolanaAgentKit:
         Returns:
             dict: Historical trade data.
         """
-        from agentipy.tools.use_backpack import BackpackManager
+        from solana_agent_kit.tools.use_backpack import BackpackManager
         try:
             return await BackpackManager.get_historical_trades(self, symbol, limit, offset)
         except Exception as e:
