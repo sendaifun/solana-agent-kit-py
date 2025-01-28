@@ -4,7 +4,7 @@
 
 ![Solana Agent Kit Cover 1 (3)](https://github.com/user-attachments/assets/cfa380f6-79d9-474d-9852-3e1976c6de70)
 
-![PyPI Downloads](https://img.shields.io/pypi/dm/solana-agent-kit?style=for-the-badge)
+![PyPI Downloads](https://img.shields.io/pypi/dm/solana-agent-kit-py?style=for-the-badge)
 ![GitHub forks](https://img.shields.io/github/forks/sendaifun/solana-agent-kit-py?style=for-the-badge)
 ![GitHub License](https://img.shields.io/github/license/sendaifun/solana-agent-kit-py?style=for-the-badge)
 
