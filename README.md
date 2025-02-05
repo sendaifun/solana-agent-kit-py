@@ -80,7 +80,7 @@ You can view the full documentation of the kit at [docs.solanaagentkit.xyz](http
 ## 📦 Installation
 
 ```bash
-pip install solana-agent-kit
+pip install solana-agent-kit-py
 ```
 
 ## Quick Start
