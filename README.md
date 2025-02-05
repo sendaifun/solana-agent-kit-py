@@ -1,62 +1,92 @@
 # Solana Agent Kit
 
-A powerful toolkit for interacting with the Solana blockchain, providing easy-to-use functions for token operations, trading, and more. Now integrated with LangChain for enhanced functionality.
+<div align="center">
 
-## Features
+![Solana Agent Kit Cover 1 (3)](https://github.com/user-attachments/assets/cfa380f6-79d9-474d-9852-3e1976c6de70)
 
-- 🪙 Token Operations
+![GitHub forks](https://img.shields.io/github/forks/sendaifun/solana-agent-kit-py?style=for-the-badge)
+![GitHub License](https://img.shields.io/github/license/sendaifun/solana-agent-kit-py?style=for-the-badge)
 
-  - Transfer SOL and SPL tokens
-  - Check token balances
+</div>
+
+An open-source toolkit for connecting AI agents to Solana protocols. Now, any agent, using any model can autonomously perform 60+ Solana actions:
+
+- Trade tokens
+- Launch new tokens
+- Lend assets
+- Send compressed airdrops
+- Execute blinks
+- Launch tokens on AMMs
+- And more...
+
+Anyone - whether an SF-based AI researcher or a crypto-native builder - can bring their AI agents trained with any model and seamlessly integrate with Solana.
+
+## 🔧 Core Blockchain Features
+
+- **Token Operations**
+  - Deploy SPL tokens by Metaplex
+  - Transfer assets
+  - Balance checks
   - Stake SOL
-  - Deploy new tokens
-  - Request faucet funds
-  - Burn and close token accounts
-  - Batch burn and close token accounts
+  - Zk compressed Airdrop by Light Protocol and Helius
+- **NFTs on 3.Land**
+  - Create your own collection
+  - NFT creation and automatic listing on 3.land
+  - List your NFT for sale in any SPL token
+- **NFT Management via Metaplex**
+  - Collection deployment
+  - NFT minting
+  - Metadata management
+  - Royalty configuration
 
-- 💱 Trading
+- **DeFi Integration**
+  - Jupiter Exchange swaps
+  - Launch on Pump via PumpPortal
+  - Raydium pool creation (CPMM, CLMM, AMMv4)
+  - Orca Whirlpool integration
+  - Manifest market creation, and limit orders
+  - Meteora Dynamic AMM, DLMM Pool, and Alpha Vault
+  - Openbook market creation
+  - Register and Resolve SNS
+  - Jito Bundles
+  - Pyth Price feeds for fetching Asset Prices
+  - Register/resolve Alldomains
+  - Perpetuals Trading with Adrena Protocol
+  - Drift Vaults, Perps, Lending and Borrowing
 
-  - Integrated Jupiter Exchange support
-  - Token swaps with customizable slippage
-  - Direct routing options
-  - Buy and sell tokens with Raydium liquidity
+- **Solana Blinks**
+   - Lending by Lulo (Best APR for USDC)
+   - Send Arcade Games
+   - JupSOL staking
+   - Solayer SOL (sSOL)staking
 
-- 🏦 Yield Farming
+## 🤖 AI Integration Features
 
-  - Lend idle assets to earn interest with Lulo
+- **LangChain Integration**
+  - Ready-to-use LangChain tools for blockchain operations
+  - Autonomous agent support
+  - Memory management for persistent interactions
+  - Streaming responses for real-time feedback
 
-- 🔗 LangChain Integration
+- **Autonomous Modes**
+  - Interactive chat mode for guided operations
+  - Autonomous mode for independent agent actions
+  - Configurable action intervals
+  - Built-in error handling and recovery
 
-  - Utilize LangChain tools for enhanced blockchain interactions
-  - Access a suite of tools for balance checks, transfers, token deployments, and more
+## 📃 Documentation
+You can view the full documentation of the kit at [docs.solanaagentkit.xyz](https://docs.solanaagentkit.xyz)
 
-- 📈 Performance Tracking
-
-  - Fetch current transactions per second (TPS) on the Solana network
-
-- 📊 Token Data
-
-  - Get token data by ticker
-  - Get token data by address
-
-- 🚀 Pump & Fun Tokens
-
-  - Launch Pump & Fun tokens with customizable options
-
-- 🏦 Meteora DLMM Pools
-
-  - Create Meteora DLMM pools with various configurations
-
-## Installation
+## 📦 Installation
 
 ```bash
-pip install agentipy
+pip install solana-agent-kit
 ```
 
 ## Quick Start
 
 ```python
-from agentipy import SolanaAgentKit, create_solana_tools
+from solana_agent_kit import SolanaAgentKit, create_solana_tools
 
 # Initialize with private key and optional RPC URL
 agent = SolanaAgentKit(
@@ -71,49 +101,78 @@ tools = create_solana_tools(agent)
 
 ## Usage Examples
 
-### Fetch price of a token
+### Deploy a New Token
 
 ```python
-from agentipy import SolanaAgentKit
+from solana_agent_kit import SolanaAgentKit
 
 async def main():
-agent = SolanaAgentKit(
-    "your-wallet-private-key-as-base58",
-    "https://api.mainnet-beta.solana.com",
-    "your-openai-api-key"
-)
+    agent = SolanaAgentKit(
+        "your-wallet-private-key-as-base58",
+        "https://api.mainnet-beta.solana.com",
+        "your-openai-api-key"
+    )
+    
+    result = await agent.deploy_token(
+        "my ai token",  # name
+        "uri",         # uri
+        "token",       # symbol
+        9,            # decimals
+        1000000       # initial supply
+    )
+    print("Token Mint Address:", result.mint)
 
-    # Get balance
-    balance =  await agent.fetch_price("FKMKctiJnbZKL16pCmR7ig6bvjcMJffuUMjB97YD7LJs")
-    print(f"Price: {balance} SOL")
-
-# Run the async function
 import asyncio
 asyncio.run(main())
+```
 
+### Create NFT Collection
+
+```python
+from solana_agent_kit import SolanaAgentKit
+
+async def main():
+    agent = SolanaAgentKit(
+        "your-wallet-private-key-as-base58",
+        "https://api.mainnet-beta.solana.com",
+        "your-openai-api-key"
+    )
+    
+    collection = await agent.deploy_collection({
+        "name": "My NFT Collection",
+        "uri": "https://arweave.net/metadata.json",
+        "royalty_basis_points": 500,  # 5%
+        "creators": [
+            {
+                "address": "creator-wallet-address",
+                "percentage": 100
+            }
+        ]
+    })
+
+import asyncio
+asyncio.run(main())
 ```
 
 ### Swap Tokens
 
 ```python
-from agentipy import SolanaAgentKit
-
+from solana_agent_kit import SolanaAgentKit
 from solders.pubkey import Pubkey
 
 async def main():
-agent = SolanaAgentKit(
-    "your-wallet-private-key-as-base58",
-    "https://api.mainnet-beta.solana.com",
-    "your-openai-api-key"
-)
-
-signature = await agent.trade(
-    agent,
-    output_mint=Pubkey.from_string("target-token-mint"),
-    input_amount=100,  # amount
-    input_mint=Pubkey.from_string("source-token-mint"),
-    slippage_bps=300  # 3% slippage
-)
+    agent = SolanaAgentKit(
+        "your-wallet-private-key-as-base58",
+        "https://api.mainnet-beta.solana.com",
+        "your-openai-api-key"
+    )
+    
+    signature = await agent.trade(
+        output_mint=Pubkey.from_string("target-token-mint"),
+        input_amount=100,  # amount
+        input_mint=Pubkey.from_string("source-token-mint"),
+        slippage_bps=300  # 3% slippage
+    )
 
 import asyncio
 asyncio.run(main())
@@ -122,7 +181,7 @@ asyncio.run(main())
 ### Lend Tokens
 
 ```python
-from agentipy import SolanaAgentKit
+from solana_agent_kit import SolanaAgentKit
 
 from solders.pubkey import Pubkey
 
@@ -143,7 +202,7 @@ asyncio.run(main())
 ### Stake SOL
 
 ```python
-from agentipy import SolanaAgentKit
+from solana_agent_kit import SolanaAgentKit
 
 from solders.pubkey import Pubkey
 
@@ -165,7 +224,7 @@ asyncio.run(main())
 ### Request Faucet Funds
 
 ```python
-from agentipy import SolanaAgentKit
+from solana_agent_kit import SolanaAgentKit
 
 async def main():
     agent = SolanaAgentKit(
@@ -184,7 +243,7 @@ asyncio.run(main())
 ### Fetch Current TPS
 
 ```python
-from agentipy import SolanaAgentKit
+from solana_agent_kit import SolanaAgentKit
 
 async def main():
     agent = SolanaAgentKit(
@@ -203,7 +262,7 @@ asyncio.run(main())
 ### Get Token Data by Ticker
 
 ```python
-from agentipy import SolanaAgentKit
+from solana_agent_kit import SolanaAgentKit
 
 async def main():
     agent = SolanaAgentKit(
@@ -222,7 +281,7 @@ asyncio.run(main())
 ### Get Token Data by Address
 
 ```python
-from agentipy import SolanaAgentKit
+from solana_agent_kit import SolanaAgentKit
 from solders.pubkey import Pubkey
 
 async def main():
@@ -242,8 +301,8 @@ asyncio.run(main())
 ### Launch Pump Fun Token
 
 ```python
-from agentipy import SolanaAgentKit
-from agentipy.types import PumpfunTokenOptions
+from solana_agent_kit import SolanaAgentKit
+from solana_agent_kit.types import PumpfunTokenOptions
 
 async def main():
     agent = SolanaAgentKit(
@@ -269,9 +328,9 @@ async def main():
 ### Create Meteora DLMM Pool
 
 ```python
-from agentipy import SolanaAgentKit
+from solana_agent_kit import SolanaAgentKit
 from solders.pubkey import Pubkey
-from agentipy.utils.meteora_dlmm.types import ActivationType
+from solana_agent_kit.utils.meteora_dlmm.types import ActivationType
 
 async def main():
     agent = SolanaAgentKit(
@@ -300,7 +359,7 @@ asyncio.run(main())
 ### Buy Tokens with Raydium
 
 ```python
-from agentipy import SolanaAgentKit
+from solana_agent_kit import SolanaAgentKit
 from solders.pubkey import Pubkey
 
 async def main():
@@ -324,7 +383,7 @@ asyncio.run(main())
 ### Sell Tokens with Raydium
 
 ```python
-from agentipy import SolanaAgentKit
+from solana_agent_kit import SolanaAgentKit
 from solders.pubkey import Pubkey
 
 async def main():
@@ -348,7 +407,7 @@ asyncio.run(main())
 ### Burn and Close Token Account
 
 ```python
-from agentipy import SolanaAgentKit
+from solana_agent_kit import SolanaAgentKit
 
 async def main():
     agent = SolanaAgentKit(
@@ -367,7 +426,7 @@ asyncio.run(main())
 ### Batch burn and Close Token Account
 
 ```python
-from agentipy import SolanaAgentKit
+from solana_agent_kit import SolanaAgentKit
 
 async def main():
     agent = SolanaAgentKit(
@@ -384,92 +443,28 @@ import asyncio
 asyncio.run(main())
 ```
 
-## API Reference
-
-### Core Functions
-
-#### `transfer(agent, to, amount, mint?)`
-
-Transfer SOL or SPL tokens to a recipient.
-
-#### `trade(agent, output_mint, input_amount, input_mint?, slippage_bps?)`
-
-Swap tokens using Jupiter Exchange integration.
-
-#### `get_balance(agent, token_address)`
-
-Check SOL or token balance for the agent's wallet.
-
-#### `lend_asset(agent, asset_mint, amount)`
-
-Lend idle assets to earn interest with Lulo.
-
-#### `stake(agent, amount)`
-
-Stake SOL with Jupiter to earn rewards.
-
-#### `request_faucet_funds(agent)`
-
-Request faucet funds for testing purposes.
-
-#### `deploy_token(agent, decimals)`
-
-Deploy a new token with specified decimals.
-
-#### `fetch_price(agent, token_id)`
-
-Fetch the price of a token.
-
-#### `get_tps(agent)`
-
-Fetch the current transactions per second (TPS) on the Solana network.
-
-#### `get_token_data_by_ticker(agent, ticker)`
-
-Get token data by ticker.
-
-#### `get_token_data_by_address(agent, mint)`
-
-Get token data by address.
-
-#### `launch_pump_fun_token(agent, token_name, token_ticker, description, image_url, options)`
-
-Launch a Pump & Fun token with customizable options.
-
-#### `create_meteora_dlmm_pool(agent, bin_step, token_a_mint, token_b_mint, initial_price, price_rounding_up, fee_bps, activation_type, has_alpha_vault, activation_point)`
-
-Create a Meteora DLMM pool with various configurations.
-
-#### `buy_with_raydium(agent, pair_address, sol_in, slippage)`
-
-Buy tokens from Raydium liquidity pools.
-
-#### `sell_with_raydium(agent, pair_address, percentage, slippage)`
-
-Sell tokens using Raydium liquidity pools.
-
-#### `burn_and_close_accounts(agent, token_account)`
-
-Burns and closes token account.
-
-#### `multiple_burn_and_close_accounts(agent, token_accounts)`
-
-Burns and closes multiple token accounts.
-
 ## Dependencies
 
 The toolkit relies on several key Solana and Metaplex libraries:
 
 - solana-py
 - spl-token-py
+- metaplex-python-sdk
 
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+Refer to [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on how to contribute to this project.
 
 ## License
 
-ISC License
+Apache-2 License
+
+## Funding
+
+If you wanna give back any tokens or donations to the OSS community -- The Public Solana Agent Kit Treasury Address:
+
+Solana Network : EKHTbXpsm6YDgJzMkFxNU1LNXeWcUW7Ezf8mjUNQQ4Pa
 
 ## Security
 
